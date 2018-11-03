@@ -20,8 +20,24 @@ public class PlayerMovement : MonoBehaviour {
 
         rbPlayer = GetComponent<Rigidbody>();
 	}
-	
-	void Update () {
+
+    private void FixedUpdate()
+    {
+        enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
+        rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
+
+        // Vamos a cambiar de Sentido
+        if (xPos > 0.0f && !irDerecha)
+        {
+            DarLaVuelta();
+        }
+        else if (xPos < 0.0f && irDerecha)
+        {
+            DarLaVuelta();
+        }
+    }
+
+    void Update () {
 
         xPos = Input.GetAxis("Horizontal");
         // Salto
@@ -31,20 +47,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 	}
 
-    private void FixedUpdate() {
-
-        enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
-        rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
-
-        // Vamos a cambiar de Sentido
-        if(xPos > 0.0f && !irDerecha)
-        {
-            DarLaVuelta();
-        } else if (xPos < 0.0f && irDerecha)
-        {
-            DarLaVuelta();
-        }
-    }
+    
 
     private void DarLaVuelta()
     {
