@@ -7,14 +7,14 @@ public class PlayerMovement : MonoBehaviour {
     
     [SerializeField] float speed = 6.0f;
     [SerializeField] float xPos;
-    [SerializeField] float jumpForce = 300.0f;
     bool irDerecha = true;
     Rigidbody rbPlayer;
     // VARIABLES PARA EL SALTO
-    [SerializeField] float radioPies = 0.2f;
-    [SerializeField] Transform posPies;
-    [SerializeField] LayerMask floorLayer;
-    bool saltando = false;
+    [SerializeField] float jumpForce = 300.0f;
+    [SerializeField] float comprobadorRadio = 0.07f;
+    [SerializeField] Transform comprobadorSuelo;
+    [SerializeField] LayerMask mascaraSuelo;
+    public bool enSuelo = true;
 
     void Start () {
 
@@ -25,15 +25,15 @@ public class PlayerMovement : MonoBehaviour {
 
         xPos = Input.GetAxis("Horizontal");
         // Salto
-        if (saltando && Input.GetButtonDown("Jump"))
+        if (enSuelo && Input.GetButtonDown("Jump"))
         {
-            rbPlayer.AddForce(new Vector2(0, jumpForce));
+            rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
 	}
 
     private void FixedUpdate() {
 
-        saltando = Physics2D.OverlapCircle(posPies.position, radioPies, floorLayer);
+        enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
         rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
 
         // Vamos a cambiar de Sentido
@@ -52,8 +52,10 @@ public class PlayerMovement : MonoBehaviour {
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
 
+    /*
     private void OnCollisionStay(Collision collision)
     {
         print("ONCOLLIDER:" + collision.gameObject.name);
     }
+    */
 }
