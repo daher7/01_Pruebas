@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float distanciaSuelo = 0.1f;
     // VARIABLES PARA EL DISPARO
     [SerializeField] GameObject prefabCuchillo;
-    //[SerializeField] Transform cuchillo;
     [SerializeField] Transform ptoGeneracionCuchillo;
     [SerializeField] float fuerzaDisparo;
 
@@ -50,20 +49,22 @@ public class PlayerMovement : MonoBehaviour {
 
         xPos = Input.GetAxis("Horizontal");
         // Salto
-        if (enSuelo() && Input.GetButtonDown("Jump"))
+        if (enSuelo() && Input.GetButtonDown("Vertical"))
         {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Jump"))
         {
-            print("HAS CLICADO EL BOTON IZDO");
             Disparar();
         }
     }
 
     private void Disparar()
     {
-        GameObject proyectil = Instantiate(prefabCuchillo, ptoGeneracionCuchillo.position, ptoGeneracionCuchillo.rotation);
+        GameObject proyectil = Instantiate(
+            prefabCuchillo, 
+            ptoGeneracionCuchillo.position, 
+            ptoGeneracionCuchillo.rotation);
         proyectil.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fuerzaDisparo);
     }
 
@@ -77,9 +78,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
     }
-
-
-
 
     /*
     private void OnCollisionStay(Collision collision)
