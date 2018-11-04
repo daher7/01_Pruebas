@@ -992,6 +992,26 @@ Prefab:
       propertyPath: m_Center.y
       value: 1.2184112
       objectReference: {fileID: 0}
+    - target: {fileID: 114368821307781948, guid: 4c18e063cd8563b4bac24cc7796ba29b,
+        type: 2}
+      propertyPath: comprobadorSuelo
+      value: 
+      objectReference: {fileID: 1053469580}
+    - target: {fileID: 114368821307781948, guid: 4c18e063cd8563b4bac24cc7796ba29b,
+        type: 2}
+      propertyPath: mascaraSuelo.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368821307781948, guid: 4c18e063cd8563b4bac24cc7796ba29b,
+        type: 2}
+      propertyPath: comprobadorRadio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54846746352310454, guid: 4c18e063cd8563b4bac24cc7796ba29b,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c18e063cd8563b4bac24cc7796ba29b, type: 2}
   m_IsPrefabAsset: 0
