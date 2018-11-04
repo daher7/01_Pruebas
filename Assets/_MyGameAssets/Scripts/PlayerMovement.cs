@@ -12,6 +12,11 @@ public class PlayerMovement : MonoBehaviour {
     // VARIABLES PARA EL SALTO
     [SerializeField] float jumpForce = 300.0f;
     [SerializeField] float distanciaSuelo = 0.1f;
+    // VARIABLES PARA EL DISPARO
+    [SerializeField] GameObject prefabCuchillo;
+    //[SerializeField] Transform cuchillo;
+    [SerializeField] Transform ptoGeneracionCuchillo;
+    [SerializeField] float fuerzaDisparo;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -49,7 +54,18 @@ public class PlayerMovement : MonoBehaviour {
         {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            print("HAS CLICADO EL BOTON IZDO");
+            Disparar();
+        }
+    }
+
+    private void Disparar()
+    {
+        GameObject proyectil = Instantiate(prefabCuchillo, ptoGeneracionCuchillo.position, ptoGeneracionCuchillo.rotation);
+        proyectil.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fuerzaDisparo);
+    }
 
     private void DarLaVuelta()
     {
@@ -57,10 +73,13 @@ public class PlayerMovement : MonoBehaviour {
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
     // Funcion para comprobar que esté en el suelo. Se trata de una funcion que devuelve un valor booleano
-    bool enSuelo()
+    private bool enSuelo()
     {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
     }
+
+
+
 
     /*
     private void OnCollisionStay(Collision collision)
