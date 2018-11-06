@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoinScript : MonoBehaviour {
 
     [SerializeField] int puntos = 10;
-    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -15,5 +15,5 @@ public class CoinScript : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-}       
+}
 

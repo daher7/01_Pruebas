@@ -94,10 +94,4 @@ public class PlayerMovement : MonoBehaviour
         puntuacionActual += puntuacionGanada;
     }
 
-    /*
-    private void OnCollisionStay(Collision collision)
-    {
-        print("ONCOLLIDER:" + collision.gameObject.name);
-    }
-    */
 }
