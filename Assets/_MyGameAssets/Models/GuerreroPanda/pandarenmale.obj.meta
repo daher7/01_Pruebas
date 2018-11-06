@@ -31,6 +31,18 @@ ModelImporter:
     400024: //RootNode
     2100000: pandarenmale_Body
     2100002: PandaMaleSkinExtra00_03_Dbl
+    2100004: Geoset_000-HairstylesMat
+    2100006: Geoset_001-HairstylesMat
+    2100008: Geoset_002-HairstylesMat
+    2100010: Geoset_003-HairstylesMat
+    2100012: Geoset_004-HairstylesMat
+    2100014: Geoset_005-BracesMat
+    2100016: Geoset_016-BootsMat
+    2100018: Geoset_022-TrousersMat
+    2100020: Geoset_036-EarsMat
+    2100022: Geoset_045-Facial1Mat
+    2100024: Geoset_057-Facial2Mat
+    2100026: Geoset_067-HairstylesMat
     2300000: Geoset_000-Hairstyles
     2300002: Geoset_001-Hairstyles
     2300004: Geoset_002-Hairstyles
@@ -67,7 +79,69 @@ ModelImporter:
     4300018: Geoset_045-Facial1
     4300020: Geoset_057-Facial2
     4300022: Geoset_067-Hairstyles
-  externalObjects: {}
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_000-HairstylesMat
+    second: {fileID: 2100000, guid: 2c156c403d946bd41a93c3a361065a95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_001-HairstylesMat
+    second: {fileID: 2100000, guid: e501a561c36bd2b4e9ccca50e2fa2022, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_002-HairstylesMat
+    second: {fileID: 2100000, guid: 05d51bcdc63a78e4aa7900503d2cb965, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_003-HairstylesMat
+    second: {fileID: 2100000, guid: 3e334d57d8961434c92bbb35334d600d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_004-HairstylesMat
+    second: {fileID: 2100000, guid: bda932a3f4a1f064cace5af366f6f153, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_005-BracesMat
+    second: {fileID: 2100000, guid: ddfa7c6bb00e1ca47938df2165bc0180, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_016-BootsMat
+    second: {fileID: 2100000, guid: 069e972e2c86111418eafa7557bd5404, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_022-TrousersMat
+    second: {fileID: 2100000, guid: 8563508b0dbe9c941b7b67116a4886aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_036-EarsMat
+    second: {fileID: 2100000, guid: 095ed7696ff42a342a3f87620c8e6093, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_045-Facial1Mat
+    second: {fileID: 2100000, guid: 98649fa86f626584da84be41f3457fcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_057-Facial2Mat
+    second: {fileID: 2100000, guid: f93301d6a26be8245b3d81005a7ff1b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geoset_067-HairstylesMat
+    second: {fileID: 2100000, guid: c7c14532135882948b165f4fcb2a2784, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -79,15 +153,16 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
-    animationCompression: 1
+    importConstraints: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -119,18 +194,83 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
     human: []
-    skeleton: []
+    skeleton:
+    - name: pandarenmale(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_000-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_001-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_002-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_003-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_004-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_005-Braces
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_016-Boots
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_022-Trousers
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_036-Ears
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_045-Facial1
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_057-Facial2
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Geoset_067-Hairstyles
+      parentName: pandarenmale(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -143,7 +283,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

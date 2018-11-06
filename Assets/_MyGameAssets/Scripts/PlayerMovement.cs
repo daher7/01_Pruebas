@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
-
-    
+public class PlayerMovement : MonoBehaviour
+{
     [SerializeField] float speed = 6.0f;
     [SerializeField] float xPos;
     bool irDerecha = true;
@@ -16,6 +15,12 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] GameObject prefabCuchillo;
     [SerializeField] Transform ptoGeneracionCuchillo;
     [SerializeField] float fuerzaDisparo;
+    // VARIABLES PARA LA SALUD
+    [SerializeField] int saludActual = 100;
+    [SerializeField] int saludMaxima = 100;
+    [SerializeField] int vidasMaximas = 3;
+    // VARIABLES PARA LA PUNTUACION
+    [SerializeField] int puntuacionActual = 0;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -23,10 +28,13 @@ public class PlayerMovement : MonoBehaviour {
     //[SerializeField] LayerMask mascaraSuelo;
     //public bool enSuelo = true;
 
-    void Start () {
+    void Start()
+    {
 
         rbPlayer = GetComponent<Rigidbody>();
-	}
+        // La salud inicial es la salud Máxima
+        saludActual = saludMaxima;
+    }
 
     private void FixedUpdate()
     {
@@ -45,7 +53,8 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void Update () {
+    void Update()
+    {
 
         xPos = Input.GetAxis("Horizontal");
         // Salto
@@ -62,8 +71,8 @@ public class PlayerMovement : MonoBehaviour {
     private void Disparar()
     {
         GameObject proyectil = Instantiate(
-            prefabCuchillo, 
-            ptoGeneracionCuchillo.position, 
+            prefabCuchillo,
+            ptoGeneracionCuchillo.position,
             ptoGeneracionCuchillo.rotation);
         proyectil.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fuerzaDisparo);
     }
@@ -77,6 +86,12 @@ public class PlayerMovement : MonoBehaviour {
     private bool enSuelo()
     {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
+    }
+
+    // Funcion para recibir puntos
+    public void IncrementarPuntuacion(int puntuacionGanada)
+    {
+        puntuacionActual += puntuacionGanada;
     }
 
     /*
