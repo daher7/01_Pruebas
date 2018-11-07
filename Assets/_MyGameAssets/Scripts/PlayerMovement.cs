@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     // VARIABLES PARA LA SALUD
     [SerializeField] int saludActual = 100;
     [SerializeField] int saludMaxima = 100;
+    [SerializeField] int vidas = 3;
     [SerializeField] int vidasMaximas = 3;
     // VARIABLES PARA LA PUNTUACION
     [SerializeField] int puntuacionActual = 0;
@@ -92,6 +93,30 @@ public class PlayerMovement : MonoBehaviour
     public void IncrementarPuntuacion(int puntuacionGanada)
     {
         puntuacionActual += puntuacionGanada;
+    }
+     // Funcion para recibir daño
+     public void QuitarSalud(int danyo)
+     {
+        saludActual -= danyo;
+        if(saludActual <= 0)
+        {
+            vidas--;
+            saludActual = saludMaxima;
+            if(vidas <= 0 && saludActual <= 0)
+            {
+                print("HAS MUERTO");
+            }
+            print("Pierdes una vida");
+        }
+     }
+    // Funcion para recibir vida
+    public void RecibirVida(int vidaSumada)
+    {
+        vidas += vidaSumada;
+        if(vidas > vidasMaximas)
+        {
+            vidas = vidasMaximas;
+        }
     }
 
 }
