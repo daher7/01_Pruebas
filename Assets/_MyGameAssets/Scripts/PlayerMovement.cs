@@ -94,6 +94,16 @@ public class PlayerMovement : MonoBehaviour
     {
         puntuacionActual += puntuacionGanada;
     }
+
+    public void RecibirSalud(int saludSumada)
+    {
+        saludActual += saludSumada;
+        if(saludActual > saludMaxima)
+        {
+            saludActual = saludMaxima;
+        }
+    }
+
      // Funcion para recibir daño
      public void QuitarSalud(int danyo)
      {
