@@ -8,15 +8,12 @@ public class Cuchillo : MonoBehaviour {
    
 	void Start () {
 
+        Invoke("DestruirCuchillo", vidaCuchillo);
+
     }
 	
-	void Update ()
-    {
-        DestruirCuchillo();
-    }
-
     private void DestruirCuchillo()
     {
-        Destroy(this.gameObject, vidaCuchillo);
+        Destroy(gameObject);
     }
 }
