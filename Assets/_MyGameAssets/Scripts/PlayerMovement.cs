@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int vidas = 3;
     [SerializeField] int vidasMaximas = 3;  
     [SerializeField] Slider saludSlider;
+    [SerializeField] UIScript uiScript;
     // VARIABLES PARA LA PUNTUACION
     [SerializeField] int puntuacionActual = 0;
 
@@ -35,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rbPlayer = GetComponent<Rigidbody>();
         // La salud inicial es la salud Máxima
-        saludActual = saludMaxima;   
+        saludActual = saludMaxima;
+        vidas = vidasMaximas;
     }
 
     private void FixedUpdate()
@@ -111,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         if (saludActual <= 0)
         {
             vidas--;
+            uiScript.RestarVida();
             saludActual = saludMaxima;
             if(vidas <= 0 && saludActual <= 0)
             {
@@ -124,11 +127,16 @@ public class PlayerMovement : MonoBehaviour
     public void RecibirVida(int vidaSumada)
     {
         vidas += vidaSumada;
-        if(vidas > vidasMaximas)
+        uiScript.SumarVida();
+        if (vidas > vidasMaximas)
         {
             vidas = vidasMaximas;
-        }
-        
+        } 
     }
-
+    
+    public int GetVidas()
+    {
+        return this.vidas;
+    }
+    
 }
