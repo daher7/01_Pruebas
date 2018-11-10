@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // VARIABLES PARA LA PUNTUACION
     [SerializeField] int puntuacionActual = 0;
     [SerializeField] Text textPuntuacion;
+    // INVENCIBILIDAD
+    public bool soyInvencible = false;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -114,19 +116,22 @@ public class PlayerMovement : MonoBehaviour
     // Funcion para recibir daño
     public void QuitarSalud(int danyo)
     {
-        saludActual -= danyo;
-        if (saludActual <= 0)
+        if (!soyInvencible)
         {
-            vidas--;
-            uiScript.RestarVida();
-            saludActual = saludMaxima;
-            if(vidas <= 0 && saludActual <= 0)
+            saludActual -= danyo;
+            if (saludActual <= 0)
             {
-                 print("HAS MUERTO");
+                vidas--;
+                uiScript.RestarVida();
+                saludActual = saludMaxima;
+                if (vidas <= 0 && saludActual <= 0)
+                {
+                    Morir();
+                }
+                print("Pierdes una vida");
             }
-            print("Pierdes una vida");
+            saludSlider.value = saludActual;
         }
-        saludSlider.value = saludActual;
     }
     // Funcion para recibir vida
     public void RecibirVida(int vidaSumada)
@@ -138,10 +143,20 @@ public class PlayerMovement : MonoBehaviour
             vidas = vidasMaximas;
         } 
     }
-    
+    // Ser Invencible 
+    public void RecibirInvulnerabilidad()
+    {
+        soyInvencible = true;
+    }
+
     public int GetVidas()
     {
         return this.vidas;
+    }
+
+    private void Morir()
+    {
+        print("HAS MUERTO");
     }
     
 }

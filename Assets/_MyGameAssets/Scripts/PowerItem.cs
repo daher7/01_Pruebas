@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaludScript : MonoBehaviour {
-
-    [SerializeField] int salud = 50;
+public class PowerItem : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerMovement>().RecibirSalud(salud);
-            Destroy(gameObject);
+            print("Te doy el POWER");
+            other.gameObject.GetComponent<PlayerMovement>().RecibirInvulnerabilidad();
         }
     }
 }

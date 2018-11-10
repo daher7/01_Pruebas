@@ -10,7 +10,6 @@ public class UIScript : MonoBehaviour
     public PlayerMovement script;
     Image[] imagenesVida;
     private int numeroVidas;
-    //Image nuevaImagen;
 
     void Start()
     {
