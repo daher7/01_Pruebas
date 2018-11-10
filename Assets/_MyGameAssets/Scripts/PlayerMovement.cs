@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] UIScript uiScript;
     // VARIABLES PARA LA PUNTUACION
     [SerializeField] int puntuacionActual = 0;
+    [SerializeField] Text textPuntuacion;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -37,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
         rbPlayer = GetComponent<Rigidbody>();
         // La salud inicial es la salud Máxima
         saludActual = saludMaxima;
+        // Las vidas iniciales son las maximas
         vidas = vidasMaximas;
+        // Para que aparezca la puntuacion inicial
+        textPuntuacion.text = "" + puntuacionActual.ToString();
     }
 
     private void FixedUpdate()
@@ -95,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public void IncrementarPuntuacion(int puntuacionGanada)
     {
         puntuacionActual += puntuacionGanada;
+        textPuntuacion.text = "" + puntuacionActual.ToString();
     }
     // Funcion para recibir salud
     public void RecibirSalud(int saludSumada)
