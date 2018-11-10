@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int saludActual = 100;
     [SerializeField] int saludMaxima = 100;
     [SerializeField] int vidas = 3;
-    [SerializeField] int vidasMaximas = 3;
+    [SerializeField] int vidasMaximas = 3;  
+    [SerializeField] Slider saludSlider;
     // VARIABLES PARA LA PUNTUACION
     [SerializeField] int puntuacionActual = 0;
 
@@ -31,10 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
         rbPlayer = GetComponent<Rigidbody>();
         // La salud inicial es la salud Máxima
-        saludActual = saludMaxima;
+        saludActual = saludMaxima;   
     }
 
     private void FixedUpdate()
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             Disparar();
         }
     }
-
+    // METODOS PROPIOS
     private void Disparar()
     {
         GameObject proyectil = Instantiate(
@@ -88,13 +89,12 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
     }
-
     // Funcion para recibir puntos
     public void IncrementarPuntuacion(int puntuacionGanada)
     {
         puntuacionActual += puntuacionGanada;
     }
-
+    // Funcion para recibir salud
     public void RecibirSalud(int saludSumada)
     {
         saludActual += saludSumada;
@@ -102,23 +102,24 @@ public class PlayerMovement : MonoBehaviour
         {
             saludActual = saludMaxima;
         }
+        saludSlider.value = saludActual;
     }
-
-     // Funcion para recibir daño
-     public void QuitarSalud(int danyo)
-     {
+    // Funcion para recibir daño
+    public void QuitarSalud(int danyo)
+    {
         saludActual -= danyo;
-        if(saludActual <= 0)
+        if (saludActual <= 0)
         {
             vidas--;
             saludActual = saludMaxima;
             if(vidas <= 0 && saludActual <= 0)
             {
-                print("HAS MUERTO");
+                 print("HAS MUERTO");
             }
             print("Pierdes una vida");
         }
-     }
+        saludSlider.value = saludActual;
+    }
     // Funcion para recibir vida
     public void RecibirVida(int vidaSumada)
     {
@@ -127,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
         {
             vidas = vidasMaximas;
         }
+        
     }
 
 }
