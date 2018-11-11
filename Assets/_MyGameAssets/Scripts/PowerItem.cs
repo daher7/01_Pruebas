@@ -10,6 +10,7 @@ public class PowerItem : MonoBehaviour {
         {
             print("Te doy el POWER");
             other.gameObject.GetComponent<PlayerMovement>().RecibirInvulnerabilidad();
+            Destroy(gameObject);
         }
     }
 }

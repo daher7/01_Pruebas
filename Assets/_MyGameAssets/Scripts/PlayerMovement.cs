@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Text textPuntuacion;
     // INVENCIBILIDAD
     public bool soyInvencible = false;
+    [SerializeField] float tiempoInvencible = 10f;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -143,10 +144,17 @@ public class PlayerMovement : MonoBehaviour
             vidas = vidasMaximas;
         } 
     }
-    // Ser Invencible 
+    // Ser Invencible  
     public void RecibirInvulnerabilidad()
     {
+        StartCoroutine (InvencibleRutina());
+    }
+
+    public IEnumerator InvencibleRutina()
+    {
         soyInvencible = true;
+        yield return new WaitForSeconds(tiempoInvencible);
+        soyInvencible = false;
     }
 
     public int GetVidas()
@@ -154,8 +162,10 @@ public class PlayerMovement : MonoBehaviour
         return this.vidas;
     }
 
-    private void Morir()
+    public void Morir()
     {
+        saludActual = 0;
+        saludSlider.value = saludActual;
         print("HAS MUERTO");
     }
     
