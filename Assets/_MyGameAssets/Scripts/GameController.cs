@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
     // Declaracion de constantes
     private const string XPOS = "xPos";
     private const string YPOS = "yPos";
+   
 
     // Guardamos la posicion del jugador
     public static void AlmacenarPosicion(Vector2 posicion)
@@ -19,13 +21,14 @@ public class GameController : MonoBehaviour {
     {
         // Validamos que previamente haya un guardado
         Vector2 posicion;
-        if(PlayerPrefs.HasKey(XPOS) && PlayerPrefs.HasKey(YPOS))
+        if (PlayerPrefs.HasKey(XPOS) && PlayerPrefs.HasKey(YPOS))
         {
             float x = PlayerPrefs.GetFloat(XPOS);
             float y = PlayerPrefs.GetFloat(YPOS);
             posicion = new Vector2(x, y);
             print(x + ":" + y);
-        } else
+        }
+        else
         {
             posicion = Vector2.zero;
         }

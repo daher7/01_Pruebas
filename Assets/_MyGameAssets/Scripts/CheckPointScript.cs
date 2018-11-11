@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPointScript : MonoBehaviour {
+public class CheckPointScript : MonoBehaviour
+{
 
     private void OnCollisionEnter(Collision collision)
     {
