@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-
     // Declaracion de constantes
     private const string XPOS = "xPos";
     private const string YPOS = "yPos";
-   
 
     // Guardamos la posicion del jugador
     public static void AlmacenarPosicion(Vector2 posicion)

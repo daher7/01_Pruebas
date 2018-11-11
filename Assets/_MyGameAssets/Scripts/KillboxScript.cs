@@ -9,6 +9,7 @@ public class KillboxScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Vector2 position = GameController.ObtenerPosicion();
+            other.gameObject.GetComponent<PlayerMovement>().RecibirSalud(100);
             other.gameObject.transform.position = position;
         }
     }
