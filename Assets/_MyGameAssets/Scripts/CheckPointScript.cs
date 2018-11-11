@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CheckPointScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            print("CHECKPOINT");
+            GameController.AlmacenarPosicion(collision.gameObject.transform.position);
+            Destroy(gameObject);
+        }
+    }
 }
