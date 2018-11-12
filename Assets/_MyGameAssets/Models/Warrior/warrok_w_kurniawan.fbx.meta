@@ -142,7 +142,12 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: Warrok
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: warrok_MAT
+    second: {fileID: 2100000, guid: 0e03165914d6e1548a7e94ae0564f63b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

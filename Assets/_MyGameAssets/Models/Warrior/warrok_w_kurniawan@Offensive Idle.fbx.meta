@@ -142,7 +142,32 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: Warrok
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: warrok_MAT
+    second: {fileID: 2100000, guid: 0e03165914d6e1548a7e94ae0564f63b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bear_alpha
+    second: {fileID: 2800000, guid: 1ba98b9058dc64e419d085d237519958, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bear_diffuse
+    second: {fileID: 2800000, guid: 7553d4446e1d13c4089ccd0e7c7432fc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bear_normal
+    second: {fileID: 2800000, guid: 8d53332275ab0bf408ba9c9cc644b64c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bear_specular
+    second: {fileID: 2800000, guid: cba85d9cfce68e2489ba33688ae253d5, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

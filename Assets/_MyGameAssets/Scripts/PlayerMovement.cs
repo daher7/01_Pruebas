@@ -168,5 +168,4 @@ public class PlayerMovement : MonoBehaviour
         saludSlider.value = saludActual;
         print("HAS MUERTO");
     }
-    
 }
