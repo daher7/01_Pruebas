@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         xPos = Input.GetAxis("Horizontal");
         // Salto
-        if (enSuelo() && Input.GetButtonDown("Vertical"))
+        if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
         {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
