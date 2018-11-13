@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 486124276}
   - component: {fileID: 486124277}
   - component: {fileID: 486124278}
+  - component: {fileID: 486124279}
   m_Layer: 0
   m_Name: EnemigoMovil
   m_TagString: Enemigo
@@ -705,7 +706,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486124274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.01, y: 0.02, z: 0}
+  m_LocalPosition: {x: -14.01, y: 1.33, z: -0.052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1543228024}
@@ -722,10 +723,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.38253185
-  m_Height: 2.1348383
+  m_Radius: 0.40285543
+  m_Height: 2.2045193
   m_Direction: 1
-  m_Center: {x: 0.011453927, y: 1.06009, z: 0.10983616}
+  m_Center: {x: 0.040488243, y: -0.21159554, z: 0.043058187}
 --- !u!114 &486124277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,10 +739,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4be108b8df2694da0d1066e1c69125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vida: 100
   danyo: 25
   speed: 1
   limDerecha: 100
   limIzquierda: -100
+  psExplosion: {fileID: 19800004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 2}
 --- !u!54 &486124278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -757,6 +760,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!95 &486124279
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486124274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
+  m_Controller: {fileID: 9100000, guid: ae95d5ecc8210f648803a3edb820eabc, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &494488816
 Prefab:
   m_ObjectHideFlags: 0
@@ -869,8 +890,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.08987616, y: -0.0005987824, z: 0.000046787223, w: 0.9959527}
-  m_LocalPosition: {x: 5.4284296, y: 5.8909597, z: -9.169596}
+  m_LocalRotation: {x: -0.029995404, y: -0.0042015477, z: 0.00012543851, w: -0.9995412}
+  m_LocalPosition: {x: -10.029938, y: 2.7797463, z: -7.621755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2416,15 +2437,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.3100001
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.052
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2432,7 +2453,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2458,7 +2479,8 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed9e550b0f1434d4894b42724159e1e9, type: 3}
   m_IsPrefabAsset: 0
 --- !u!4 &1543228024 stripped

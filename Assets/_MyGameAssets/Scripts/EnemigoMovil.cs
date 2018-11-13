@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemigoMovil : MonoBehaviour
 {
-
+    [SerializeField] int vida = 100;
     [SerializeField] int danyo = 25;
 
     bool haciaDerecha = true;
@@ -12,6 +12,7 @@ public class EnemigoMovil : MonoBehaviour
     [SerializeField] int limDerecha = 50;
     [SerializeField] int limIzquierda = -50;
     int mueve = 0;
+    [SerializeField] protected ParticleSystem psExplosion;
 
     void Update()
     {
@@ -49,11 +50,21 @@ public class EnemigoMovil : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+    public void RecibirDanyo(int danyoRecibido)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        vida -= danyoRecibido;
+        if(vida <= 0)
         {
-            collision.gameObject.GetComponent<PlayerMovement>().QuitarSalud(danyo);
+            vida = 0;
+            Morir();
         }
+    }
+
+    public void Morir()
+    {
+        ParticleSystem ps = Instantiate(psExplosion, transform.position, Quaternion.identity);
+        ps.Play();
+        Destroy(gameObject);
     }
 }
