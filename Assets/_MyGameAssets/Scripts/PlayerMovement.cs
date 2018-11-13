@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     // INVENCIBILIDAD
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
+    // SONIDOS
+    [SerializeField] AudioClip sonidoAbeja;
+    AudioSource fuenteAudio;
 
     // Si usaramos un OverlapSphere necesitamos estas variables
     //[SerializeField] float comprobadorRadio = 0.07f;
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         vidas = vidasMaximas;
         // Para que aparezca la puntuacion inicial
         textPuntuacion.text = "" + puntuacionActual.ToString();
+        // Para iniciar los sonidos
+        fuenteAudio = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -86,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
             ptoGeneracionCuchillo.position,
             ptoGeneracionCuchillo.rotation);
         proyectil.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fuerzaDisparo);
+        fuenteAudio.clip = sonidoAbeja;
+        fuenteAudio.Play();
     }
 
     private void DarLaVuelta()

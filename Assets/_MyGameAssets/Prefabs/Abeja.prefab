@@ -226,4 +226,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512e8e26b28eea24dbf9854da1a4d94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  danyoEnemigo: 20
   vidaCuchillo: 2

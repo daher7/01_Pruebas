@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cuchillo : MonoBehaviour
 {
-    [SerializeField] int danyoEnemigo = 25;
+    [SerializeField] int danyoEnemigo = 20;
     [SerializeField] float vidaCuchillo = 2.0f;
 
     private void Start()
@@ -16,7 +16,7 @@ public class Cuchillo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemigo"))
         {
-            other.gameObject.GetComponent<EnemigoMovil>().RecibirDanyo(25);
+            other.gameObject.GetComponent<EnemigoMovil>().RecibirDanyo(danyoEnemigo);
             DestruirCuchillo();
         }
         else if (other.gameObject.CompareTag("Player"))
