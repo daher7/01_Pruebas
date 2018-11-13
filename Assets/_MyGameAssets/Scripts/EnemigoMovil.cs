@@ -49,8 +49,7 @@ public class EnemigoMovil : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-
-    
+ 
     public void RecibirDanyo(int danyoRecibido)
     {
         vida -= danyoRecibido;
