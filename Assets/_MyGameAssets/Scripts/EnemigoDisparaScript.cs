@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemigoDisparaScript : MonoBehaviour
+public class EnemigoDisparaScript : EnemigoScript
 {
-
     [SerializeField] GameObject prefabBala;
     [SerializeField] Transform ptoGeneracionBalas;
     [SerializeField] int fuerzaBala;
@@ -42,4 +41,6 @@ public class EnemigoDisparaScript : MonoBehaviour
 
         proyectil.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * fuerzaBala);
     }
+
+   
 }
