@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemigoMovil : EnemigoScript
 {
     bool haciaDerecha = true;
+    [SerializeField] int danyoAlPlayer = 50;
     [SerializeField] float speed = 1f;
     [SerializeField] int limDerecha = 50;
     [SerializeField] int limIzquierda = -50;
@@ -43,6 +44,14 @@ public class EnemigoMovil : EnemigoScript
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().QuitarSalud(danyoAlPlayer);
         }
     }
 }
