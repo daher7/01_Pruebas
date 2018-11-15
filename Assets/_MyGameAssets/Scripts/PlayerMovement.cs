@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
                 uiScript.RestarVida();
                 if (vidas <= 0 && saludActual <= 0)
                 {
-                    Morir();
+                    //Morir();
                 }
                 print("Pierdes una vida");
             }

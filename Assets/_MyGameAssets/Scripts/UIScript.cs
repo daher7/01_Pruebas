@@ -42,8 +42,8 @@ public class UIScript : MonoBehaviour
             imagenesVida[i].color = new Color32(160, 160, 160, 128);
             if (numeroVidas == 0)
             {
-                //PlayerMovement.Destroy(player, 0.1f);
-                //GameOver();
+                PlayerMovement.Destroy(player, 0.1f);
+                GameOver();
                 print("MUERTO");
             }
         }
