@@ -170,11 +170,12 @@ public class PlayerMovement : MonoBehaviour
     public void RecibirVida(int vidaSumada)
     {
         vidas += vidaSumada;
-        uiScript.SumarVida();
+        
         if (vidas > vidasMaximas)
         {
             vidas = vidasMaximas;
-        } 
+        }
+        uiScript.SumarVida();
     }
     // Ser Invencible  
     public void RecibirInvulnerabilidad()
