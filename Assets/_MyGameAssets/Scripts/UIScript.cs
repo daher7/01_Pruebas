@@ -8,11 +8,22 @@ public class UIScript : MonoBehaviour
     public Image prefabImagenVida;
     public GameObject panelVidas;
     public PlayerMovement script;
+    public GameObject player;
     Image[] imagenesVida;
     private int numeroVidas;
+    // REFERENCIA AL GAMEOVER y RESTART
+    [SerializeField] Text gameOverText;
+    [SerializeField] Text restartText;
+    private bool gameOver;
+    private bool restart;
 
     void Start()
     {
+        gameOver = false;
+        restart = false;
+        // DEsactivamos los textos de game over
+        gameOverText.gameObject.SetActive(false);
+        restartText.gameObject.SetActive(false);
         // Para saber las vidas que tiene el personaje necesitamos acceder al script del Player
         numeroVidas = script.GetVidas();
         imagenesVida = new Image[numeroVidas];
@@ -31,6 +42,8 @@ public class UIScript : MonoBehaviour
             imagenesVida[i].color = new Color32(160, 160, 160, 128);
             if (numeroVidas == 0)
             {
+                //PlayerMovement.Destroy(player, 0.1f);
+                //GameOver();
                 print("MUERTO");
             }
         }
@@ -43,5 +56,13 @@ public class UIScript : MonoBehaviour
         {
             imagenesVida[i].color = new Color32(255, 255, 255, 255);
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        gameOver = true;
+        restartText.gameObject.SetActive(true);
+        restart = true;
     }
 }

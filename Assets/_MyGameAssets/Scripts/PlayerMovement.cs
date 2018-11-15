@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int saludActual = 100;
     [SerializeField] int saludMaxima = 100;
     [SerializeField] int vidas = 3;
-    [SerializeField] int vidasMaximas = 3;  
+    [SerializeField] int vidasMaximas = 3;
     [SerializeField] Slider saludSlider;
     [SerializeField] UIScript uiScript;
     // VARIABLES PARA LA PUNTUACION
@@ -140,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     public void RecibirSalud(int saludSumada)
     {
         saludActual += saludSumada;
-        if(saludActual > saludMaxima)
+        if (saludActual > saludMaxima)
         {
             saludActual = saludMaxima;
         }
@@ -155,8 +155,8 @@ public class PlayerMovement : MonoBehaviour
             if (saludActual <= 0)
             {
                 vidas--;
-                uiScript.RestarVida();
                 saludActual = saludMaxima;
+                uiScript.RestarVida();
                 if (vidas <= 0 && saludActual <= 0)
                 {
                     Morir();
@@ -170,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
     public void RecibirVida(int vidaSumada)
     {
         vidas += vidaSumada;
-        
+
         if (vidas > vidasMaximas)
         {
             vidas = vidasMaximas;
@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
     // Ser Invencible  
     public void RecibirInvulnerabilidad()
     {
-        StartCoroutine (InvencibleRutina());
+        StartCoroutine(InvencibleRutina());
     }
 
     public IEnumerator InvencibleRutina()
@@ -189,17 +189,16 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(tiempoInvencible);
         soyInvencible = false;
     }
-
+    // Mostrar vidas al UI
     public int GetVidas()
     {
         return this.vidas;
     }
-
+    // Morir
     public void Morir()
     {
         saludActual = 0;
         saludSlider.value = saludActual;
-        vidas = 0;
-        print("HAS MUERTO");
+        Destroy(gameObject);
     }
 }
