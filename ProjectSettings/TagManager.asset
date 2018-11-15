@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Figura
   - Enemigo
+  - WindArea
   layers:
   - Default
   - TransparentFX

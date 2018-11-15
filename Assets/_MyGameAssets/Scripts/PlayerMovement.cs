@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     // INVENCIBILIDAD
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
+    // ZONAS DE VIENTO
+    public bool inWindZone = false;
+    public GameObject windZone;
     // SONIDOS
     [SerializeField] AudioClip sonidoAbeja;
     AudioSource fuenteAudio;
@@ -57,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
         //enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
         print(enSuelo());
         rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
-
         // Vamos a cambiar de Sentido
         if (xPos > 0.0f && !irDerecha)
         {
@@ -67,11 +69,16 @@ public class PlayerMovement : MonoBehaviour
         {
             DarLaVuelta();
         }
+        // Comprobamos si estamos en zonas de viento
+        if (inWindZone)
+        {
+            rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion * windZone.GetComponent<WindArea>().fuerza);
+        }
+
     }
 
     void Update()
     {
-
         xPos = Input.GetAxis("Horizontal");
         // Salto
         if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
@@ -104,6 +111,24 @@ public class PlayerMovement : MonoBehaviour
     private bool enSuelo()
     {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
+    }
+    // Métodos para comprobar que está en zona de viento
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("WindArea"))
+        {
+            windZone = other.gameObject;
+            inWindZone = true;
+            print("SOY EL VIENTO");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("WindArea"))
+        {
+            inWindZone = false;
+        }
     }
     // Funcion para recibir puntos
     public void IncrementarPuntuacion(int puntuacionGanada)
@@ -173,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
     {
         saludActual = 0;
         saludSlider.value = saludActual;
+        vidas = 0;
         print("HAS MUERTO");
     }
 }
