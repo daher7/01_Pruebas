@@ -14,10 +14,10 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
             float posX = Mathf.SmoothDamp(
-            transform.position.x,
-            follow.transform.position.x,
-            ref velocity.x,
-            smoothTime);
+                transform.position.x,
+                follow.transform.position.x,
+                ref velocity.x,
+                smoothTime);
 
             float posY = Mathf.SmoothDamp(
                 transform.position.y,
