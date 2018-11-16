@@ -170,7 +170,12 @@ ModelImporter:
     13700018: Geoset_045-Facial1
     13700020: Geoset_057-Facial2
     13700022: Geoset_067-Hairstyles
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 166b7f8ac246e534b8ca68a159f941f0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -242,6 +247,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

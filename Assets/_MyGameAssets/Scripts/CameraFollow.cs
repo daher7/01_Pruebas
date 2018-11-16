@@ -13,6 +13,7 @@ public class CameraFollow : MonoBehaviour
     
     void FixedUpdate()
     {
+        if (follow != null) {
             float posX = Mathf.SmoothDamp(
                 transform.position.x,
                 follow.transform.position.x,
@@ -30,5 +31,6 @@ public class CameraFollow : MonoBehaviour
                 Mathf.Clamp(posX, minCamPos.x, maxCamPos.x),
                 Mathf.Clamp(posY, minCamPos.y, maxCamPos.y),
                 transform.position.z);
+        }
     }
 }

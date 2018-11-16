@@ -59,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
         print(enSuelo());
-        rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
+        if (Mathf.Abs(xPos) > 0.01f) {
+            rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
+        }
+        
         // Vamos a cambiar de Sentido
         if (xPos > 0.0f && !irDerecha)
         {
@@ -72,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         // Comprobamos si estamos en zonas de viento
         if (inWindZone)
         {
-            rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion * windZone.GetComponent<WindArea>().fuerza);
+            rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion *  windZone.GetComponent<WindArea>().fuerza);
         }
 
     }
