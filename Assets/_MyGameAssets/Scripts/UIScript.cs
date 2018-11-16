@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] Text restartText;
     private bool gameOver;
     private bool restart;
+    private bool playerVivo = true;
 
     void Start()
     {
@@ -31,6 +33,17 @@ public class UIScript : MonoBehaviour
         for (int i = 0; i < imagenesVida.Length; i++)
         {
             imagenesVida[i] = Instantiate(prefabImagenVida, panelVidas.transform);
+        }
+    }
+
+    private void Update()
+    {
+        if (restart && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(1);
+        } else if (restart && Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -60,6 +73,7 @@ public class UIScript : MonoBehaviour
 
     public void GameOver()
     {
+        playerVivo = false;
         gameOverText.gameObject.SetActive(true);
         gameOver = true;
         restartText.gameObject.SetActive(true);
