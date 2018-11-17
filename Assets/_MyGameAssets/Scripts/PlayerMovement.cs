@@ -180,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
         }
         uiScript.SumarVida();
     }
+    
     // Ser Invencible  
     public void RecibirInvulnerabilidad()
     {

@@ -61,6 +61,7 @@ public class UIScript : MonoBehaviour
             }
         }
     }
+
     public void SumarVida()
     {
         numeroVidas = script.GetVidas();
