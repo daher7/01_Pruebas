@@ -227,4 +227,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   danyoEnemigo: 20
-  vidaCuchillo: 2
+  danyoPlayer: 25
+  vidaCuchillo: 1

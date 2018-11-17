@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   danyoEnemigo: 20
-  vidaCuchillo: 2
+  danyoPlayer: 25
+  vidaCuchillo: 1
 --- !u!135 &135041450718242092
 SphereCollider:
   m_ObjectHideFlags: 1
