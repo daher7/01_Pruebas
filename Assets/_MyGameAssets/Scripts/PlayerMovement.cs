@@ -77,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion *  windZone.GetComponent<WindArea>().fuerza);
         }
-
     }
 
     void Update()
@@ -150,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
         saludSlider.value = saludActual;
     }
     // Funcion para recibir daño
+    
     public void QuitarSalud(int danyo)
     {
         if (!soyInvencible)
