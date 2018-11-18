@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4324930931198656}
   - component: {fileID: 54266105960603158}
   - component: {fileID: 65369331157259246}
-  - component: {fileID: 114988498250988882}
+  - component: {fileID: 114143669417665406}
   m_Layer: 0
   m_Name: Abeja
   m_TagString: Untagged
@@ -215,7 +215,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.085959874, y: 0.076028824, z: 0.12991424}
   m_Center: {x: 0.003570579, y: 0.07349396, z: -0.008626856}
---- !u!114 &114988498250988882
+--- !u!114 &114143669417665406
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,9 +223,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636586137536616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512e8e26b28eea24dbf9854da1a4d94f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a72917fd030cb948ba7c6cc8be87969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   danyoEnemigo: 20
-  danyoPlayer: 25
-  vidaCuchillo: 1
+  vidaAbeja: 1

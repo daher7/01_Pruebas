@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // INVENCIBILIDAD
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
+    [SerializeField] protected ParticleSystem psPlayer;
     // ZONAS DE VIENTO
     public bool inWindZone = false;
     public GameObject windZone;
@@ -53,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         textPuntuacion.text = "" + puntuacionActual.ToString();
         // Para iniciar los sonidos
         fuenteAudio = GetComponent<AudioSource>();
+        // Sistema de particulas
+        psPlayer = GetComponent<ParticleSystem>();
     }
 
     private void FixedUpdate()
@@ -190,7 +193,9 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator InvencibleRutina()
     {
         soyInvencible = true;
+        //psPlayer.emission.enabled;
         yield return new WaitForSeconds(tiempoInvencible);
+        //psPlayer.enableEmission = false;
         soyInvencible = false;
     }
     // Mostrar vidas al UI
