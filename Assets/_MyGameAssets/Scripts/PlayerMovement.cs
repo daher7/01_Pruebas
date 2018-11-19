@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
     [SerializeField] protected ParticleSystem psPlayer;
+    
     // ZONAS DE VIENTO
     public bool inWindZone = false;
     public GameObject windZone;
@@ -55,17 +56,19 @@ public class PlayerMovement : MonoBehaviour
         // Para iniciar los sonidos
         fuenteAudio = GetComponent<AudioSource>();
         // Sistema de particulas
-        psPlayer = GetComponent<ParticleSystem>();
+       
+        
     }
 
     private void FixedUpdate()
     {
         //enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
         print(enSuelo());
-        if (Mathf.Abs(xPos) > 0.01f) {
+        if (Mathf.Abs(xPos) > 0.01f)
+        {
             rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
         }
-        
+
         // Vamos a cambiar de Sentido
         if (xPos > 0.0f && !irDerecha)
         {
@@ -78,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         // Comprobamos si estamos en zonas de viento
         if (inWindZone)
         {
-            rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion *  windZone.GetComponent<WindArea>().fuerza);
+            rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion * windZone.GetComponent<WindArea>().fuerza);
         }
     }
 
@@ -152,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         saludSlider.value = saludActual;
     }
     // Funcion para recibir daño
-    
+
     public void QuitarSalud(int danyo)
     {
         if (!soyInvencible)
@@ -183,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         }
         uiScript.SumarVida();
     }
-    
+
     // Ser Invencible  
     public void RecibirInvulnerabilidad()
     {
@@ -193,8 +196,9 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator InvencibleRutina()
     {
         soyInvencible = true;
-        //psPlayer.emission.enabled;
+       
         yield return new WaitForSeconds(tiempoInvencible);
+       
         //psPlayer.enableEmission = false;
         soyInvencible = false;
     }
