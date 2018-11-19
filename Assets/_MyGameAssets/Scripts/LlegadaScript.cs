@@ -9,7 +9,7 @@ public class LlegadaScript : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(2);
+            collision.gameObject.transform.position = new Vector3(385, 4.3f, 0);
         }
     }
 

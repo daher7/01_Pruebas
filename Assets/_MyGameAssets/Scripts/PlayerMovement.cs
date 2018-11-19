@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // INVENCIBILIDAD
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
-    [SerializeField] protected ParticleSystem psPlayer;
+    [SerializeField] GameObject psPlayer;
     
     // ZONAS DE VIENTO
     public bool inWindZone = false;
@@ -196,9 +196,9 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator InvencibleRutina()
     {
         soyInvencible = true;
-       
+        psPlayer.SetActive(true);
         yield return new WaitForSeconds(tiempoInvencible);
-       
+        psPlayer.SetActive(false);
         //psPlayer.enableEmission = false;
         soyInvencible = false;
     }
