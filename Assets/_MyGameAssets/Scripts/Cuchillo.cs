@@ -6,7 +6,7 @@ public class Cuchillo : MonoBehaviour
 {
     
     [SerializeField] int danyoPlayer = 25;
-    [SerializeField] float vidaCuchillo = 2.0f;
+    [SerializeField] float vidaCuchillo = 1.0f;
 
     private void Start()
     {
