@@ -35,7 +35,7 @@ public class UIScript : MonoBehaviour
             imagenesVida[i] = Instantiate(prefabImagenVida, panelVidas.transform);
         }
     }
-
+    /*
     private void Update()
     {
         if (restart && Input.GetKeyDown(KeyCode.R))
@@ -46,7 +46,7 @@ public class UIScript : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
+    */
     public void RestarVida()
     {
         numeroVidas = script.GetVidas();
@@ -79,5 +79,15 @@ public class UIScript : MonoBehaviour
         gameOver = true;
         restartText.gameObject.SetActive(true);
         restart = true;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
