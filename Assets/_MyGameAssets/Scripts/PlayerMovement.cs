@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 6.0f;
     [SerializeField] float xPos;
+    [SerializeField] float yPos;
     bool irDerecha = true;
     Rigidbody rbPlayer;
     // VARIABLES PARA EL SALTO
@@ -87,13 +89,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        xPos = Input.GetAxis("Horizontal");
+        xPos = CrossPlatformInputManager.GetAxis("Horizontal");
+        yPos = CrossPlatformInputManager.GetAxis("Vertical");
         // Salto
-        if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
-        {
+        //if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
+        if (enSuelo() && (Mathf.Abs(yPos) > 0.02f))
+         {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
-        if (Input.GetButtonDown("Jump"))
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             Disparar();
         }
