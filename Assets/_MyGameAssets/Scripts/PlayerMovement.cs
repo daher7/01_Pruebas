@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     [SerializeField] float speed = 6.0f;
     [SerializeField] float xPos;
     [SerializeField] float yPos;
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public bool soyInvencible = false;
     [SerializeField] float tiempoInvencible = 10f;
     [SerializeField] GameObject psPlayer;
-    
+
     // ZONAS DE VIENTO
     public bool inWindZone = false;
     public GameObject windZone;
@@ -46,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] LayerMask mascaraSuelo;
     //public bool enSuelo = true;
 
-    void Start()
-    {
+    void Start() {
         rbPlayer = GetComponent<Rigidbody>();
         // La salud inicial es la salud Máxima
         saludActual = saludMaxima;
@@ -58,53 +56,44 @@ public class PlayerMovement : MonoBehaviour
         // Para iniciar los sonidos
         fuenteAudio = GetComponent<AudioSource>();
         // Sistema de particulas
-       
-        
+
+
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         //enSuelo = Physics2D.OverlapCircle(comprobadorSuelo.position, comprobadorRadio, mascaraSuelo);
         print(enSuelo());
-        if (Mathf.Abs(xPos) > 0.01f)
-        {
+        if (Mathf.Abs(xPos) > 0.01f) {
             rbPlayer.velocity = new Vector2(xPos * speed, rbPlayer.velocity.y);
         }
 
         // Vamos a cambiar de Sentido
-        if (xPos > 0.0f && !irDerecha)
-        {
+        if (xPos > 0.0f && !irDerecha) {
             DarLaVuelta();
-        }
-        else if (xPos < 0.0f && irDerecha)
-        {
+        } else if (xPos < 0.0f && irDerecha) {
             DarLaVuelta();
         }
         // Comprobamos si estamos en zonas de viento
-        if (inWindZone)
-        {
+        if (inWindZone) {
             rbPlayer.AddRelativeForce(windZone.GetComponent<WindArea>().direccion * windZone.GetComponent<WindArea>().fuerza);
         }
     }
 
-    void Update()
-    {
+    void Update() {
         xPos = CrossPlatformInputManager.GetAxis("Horizontal");
         yPos = CrossPlatformInputManager.GetAxis("Vertical");
         // Salto
         //if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
-        if (enSuelo() && (Mathf.Abs(yPos) > 0.02f))
-         {
+        //if (enSuelo() && yPos)
+        if (enSuelo() && (Mathf.Abs(yPos) > 0.01f)) {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
-        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
-        {
+        if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
             Disparar();
         }
     }
     // METODOS PROPIOS
-    private void Disparar()
-    {
+    private void Disparar() {
         GameObject proyectil = Instantiate(
             prefabCuchillo,
             ptoGeneracionCuchillo.position,
@@ -114,64 +103,51 @@ public class PlayerMovement : MonoBehaviour
         fuenteAudio.Play();
     }
 
-    private void DarLaVuelta()
-    {
+    private void DarLaVuelta() {
         irDerecha = !irDerecha;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
     // Funcion para comprobar que esté en el suelo. Se trata de una funcion que devuelve un valor booleano
-    private bool enSuelo()
-    {
+    private bool enSuelo() {
         return Physics.Raycast(transform.position, Vector3.down, distanciaSuelo);
     }
     // Métodos para comprobar que está en zona de viento
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("WindArea"))
-        {
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("WindArea")) {
             windZone = other.gameObject;
             inWindZone = true;
             print("SOY EL VIENTO");
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("WindArea"))
-        {
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("WindArea")) {
             inWindZone = false;
         }
     }
     // Funcion para recibir puntos
-    public void IncrementarPuntuacion(int puntuacionGanada)
-    {
+    public void IncrementarPuntuacion(int puntuacionGanada) {
         puntuacionActual += puntuacionGanada;
         textPuntuacion.text = "" + puntuacionActual.ToString();
     }
     // Funcion para recibir salud
-    public void RecibirSalud(int saludSumada)
-    {
+    public void RecibirSalud(int saludSumada) {
         saludActual += saludSumada;
-        if (saludActual > saludMaxima)
-        {
+        if (saludActual > saludMaxima) {
             saludActual = saludMaxima;
         }
         saludSlider.value = saludActual;
     }
     // Funcion para recibir daño
 
-    public void QuitarSalud(int danyo)
-    {
-        if (!soyInvencible)
-        {
+    public void QuitarSalud(int danyo) {
+        if (!soyInvencible) {
             saludActual -= danyo;
-            if (saludActual <= 0)
-            {
+            if (saludActual <= 0) {
                 vidas--;
                 saludActual = saludMaxima;
                 uiScript.RestarVida();
-                if (vidas <= 0 && saludActual <= 0)
-                {
+                if (vidas <= 0 && saludActual <= 0) {
                     //Morir();
                 }
                 print("Pierdes una vida");
@@ -180,25 +156,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     // Funcion para recibir vida
-    public void RecibirVida(int vidaSumada)
-    {
+    public void RecibirVida(int vidaSumada) {
         vidas += vidaSumada;
 
-        if (vidas > vidasMaximas)
-        {
+        if (vidas > vidasMaximas) {
             vidas = vidasMaximas;
         }
         uiScript.SumarVida();
     }
 
     // Ser Invencible  
-    public void RecibirInvulnerabilidad()
-    {
+    public void RecibirInvulnerabilidad() {
         StartCoroutine(InvencibleRutina());
     }
 
-    public IEnumerator InvencibleRutina()
-    {
+    public IEnumerator InvencibleRutina() {
         soyInvencible = true;
         psPlayer.SetActive(true);
         yield return new WaitForSeconds(tiempoInvencible);
@@ -207,13 +179,11 @@ public class PlayerMovement : MonoBehaviour
         soyInvencible = false;
     }
     // Mostrar vidas al UI
-    public int GetVidas()
-    {
+    public int GetVidas() {
         return this.vidas;
     }
     // Morir
-    public void Morir()
-    {
+    public void Morir() {
         saludActual = 0;
         saludSlider.value = saludActual;
         Destroy(gameObject);
