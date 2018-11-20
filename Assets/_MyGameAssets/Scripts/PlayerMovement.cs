@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
         // Salto
         //if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
         //if (enSuelo() && yPos)
-        if (enSuelo() && (Mathf.Abs(yPos) > 0.01f)) {
+        if (enSuelo() && (Mathf.Round(yPos) > 0.01f)) {
             rbPlayer.AddForce(new Vector3(0, jumpForce));
         }
         if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
