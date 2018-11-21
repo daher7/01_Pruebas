@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
+        //ESTADOS
+    enum Estado { EN_SUELO, SALTANDO};
+    Estado estado = Estado.EN_SUELO;
+    //FIN ESTADOS
+
     [SerializeField] float speed = 6.0f;
     [SerializeField] float xPos;
     [SerializeField] float yPos;
@@ -55,9 +60,6 @@ public class PlayerMovement : MonoBehaviour {
         textPuntuacion.text = "" + puntuacionActual.ToString();
         // Para iniciar los sonidos
         fuenteAudio = GetComponent<AudioSource>();
-        // Sistema de particulas
-
-
     }
 
     private void FixedUpdate() {
@@ -84,14 +86,21 @@ public class PlayerMovement : MonoBehaviour {
         yPos = CrossPlatformInputManager.GetAxis("Vertical");
         // Salto
         //if (enSuelo() && Input.GetKeyDown(KeyCode.UpArrow))
-        //if (enSuelo() && yPos)
-        if (enSuelo() && (Mathf.Round(yPos) > 0.01f)) {
+        if (enSuelo() && (Mathf.Round(yPos) > 0.01f) && estado==Estado.EN_SUELO) {
+            estado = Estado.SALTANDO;
             rbPlayer.AddForce(new Vector3(0, jumpForce));
+            Invoke("CambiarEstadoAEnSuelo", 0.1f);
         }
         if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
             Disparar();
         }
     }
+
+    private void CambiarEstadoAEnSuelo() {
+        estado = Estado.EN_SUELO;
+    }
+
+
     // METODOS PROPIOS
     private void Disparar() {
         GameObject proyectil = Instantiate(

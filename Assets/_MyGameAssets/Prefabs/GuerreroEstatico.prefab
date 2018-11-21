@@ -1663,9 +1663,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440140042735484}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 111.65, y: 4.1659036, z: -0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 225.74, y: 4.1659036, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4468310944681398}
   - {fileID: 4607034481877772}
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 100
   psExplosion: {fileID: 19800004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 2}
-  prefabBala: {fileID: 1656386293305018, guid: ebf437fe9d171c145a4c04e98ea2bd53, type: 2}
+  prefabBala: {fileID: 1155686119214404, guid: 9e5fea0adfe7c6141bb251c9d7be7751, type: 2}
   ptoGeneracionBalas: {fileID: 4243733398885852}
   fuerzaBala: 200
   tiempoEntreDisparos: 2
